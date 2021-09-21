@@ -1,0 +1,39 @@
+package com.dkit.gd2.lukecassidy;
+
+import java.nio.charset.StandardCharsets;
+
+/**
+ * Hello world!
+ *
+ */
+public class Exercise1
+{
+    public static void main( String[] args )
+    {
+        int score = 65535;
+        int newScore = 2;
+        //toBinary(score);
+        getIndividualByte(score, newScore);
+
+    }
+
+    private static void toBinary(int score)
+    {
+        System.out.println(Integer.toBinaryString(score));
+
+    }
+
+    private static void getIndividualByte(int score, int newScore)
+    {
+        String binaryScore = Integer.toBinaryString(score);
+        System.out.println(binaryScore);
+
+        String newBinaryScore = Integer.toBinaryString(newScore);
+
+
+//        String chunk1 = binaryScore.substring(12);
+//        String chunk2 = binaryScore.substring(8,12);
+//        String chunk3 = binaryScore.substring(4,8);
+//        String chunk4 = binaryScore.substring(0,4);
+
+        System.out.println(binaryScore.);
