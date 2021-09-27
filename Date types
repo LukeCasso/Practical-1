@@ -1,10 +1,28 @@
 public class DataTypes {
     public static void main( String[] args )
     {
+        Scanner keyboard = new Scanner (System.in);
+        System.out.println("Please enter which weight you want to convert from: Pounds or Kilos");
+        String conversionChoice = keyboard.next();
+        String pound = "Pounds";
+        String kilos = "Kilos";
+        if (conversionChoice.equalsIgnoreCase(pound))
+        {
+            System.out.println("Please enter the weight in Pounds");
+            float weightInPounds = keyboard.nextFloat();
+            System.out.println( weightInPounds + " Pounds to Kilos is " + convertPoundKilos(weightInPounds) + "kg");
+        }
+        else
+        {
+            System.out.println("Please enter the weight in kilos");
+            float weightInKilos = keyboard.nextFloat();
+            System.out.println( weightInKilos + " Kilos to Pounds is " + convertKilosPound(weightInKilos) + "lbs");
+        }
+
 
         int score = 65535;
-        float pound = 100;
-        float kilos = 100;
+//        float pound = 100;
+//        float kilos = 100;
 //        toBinary(score);
 //        investigateIntegers();
 //        investigateBytes();
@@ -16,8 +34,7 @@ public class DataTypes {
 //        investigateBooleans();
 //        investigateStrings();
 //        testTypeDivision();
-        System.out.println("Pound to Kilos " + convertPoundKilos(pound));
-        System.out.println("Kilos to Pound " + convertKilosPound(kilos));
+
     }
 
     private static float convertKilosPound(float weightInKilos)
@@ -173,5 +190,3 @@ public class DataTypes {
 
         System.out.println("Max is " + myMaxByteValue);
         System.out.println("Min is " + myMinByteValue);
-    }
-}
