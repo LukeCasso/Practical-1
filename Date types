@@ -1,4 +1,5 @@
-public static void main( String[] args )
+public class DataTypes {
+    public static void main( String[] args )
     {
 
         int score = 65535;
@@ -6,27 +7,92 @@ public static void main( String[] args )
 //        toBinary(score);
 //        investigateIntegers();
 //        investigateBytes();
-        investigateShort();
+//        investigateShort();
+//        investigateFloat();
+//        investigateDouble();
+//        investigateLong();
+        investigateChar();
+
+
+
+    }
+
+    private static void investigateChar()
+    {
+
+        System.out.println("Char");
+        char myChar ='A';
+        char myUniCode = '\u0044';
+        char copyrightChar = '\u00A9';
+
+        System.out.println(myChar);
+        System.out.println(myUniCode);
+        System.out.println(copyrightChar);
+    }
+
+    private static void investigateLong()
+    {
+        System.out.println("Long");
+        long myMinLongValue = Long.MIN_VALUE;
+        long myMaxLongValue = Long.MAX_VALUE;
+
+        System.out.println("Max is " + myMaxLongValue);
+        System.out.println("Min is " + myMinLongValue);
+
+        System.out.println("Max Days using long is " + convertMaxLongToDays(myMaxLongValue));
+
+        long bigValue = 2_147_987_7777L;
+        System.out.println(bigValue);
+    }
+
+    private static long convertMaxLongToDays(long myMaxLongValue)
+    {
+        return myMaxLongValue/(24*60*60*1000*365);
+    }
+
+    private static void investigateDouble()
+    {
+        System.out.println("Double");
+        double myMinDoubleValue = Double.MIN_VALUE;
+        double myMaxDoubleValue = Double.MAX_VALUE;
+
+        System.out.println("Max is " + myMaxDoubleValue);
+        System.out.println("Min is " + myMinDoubleValue);
+    }
+
+    private static void investigateFloat()
+    {
+        System.out.println("Float");
+        float myMinFloatValue = Float.MIN_VALUE;
+        float myMaxFloatValue = Float.MAX_VALUE;
+
+        System.out.println("Max is " + myMaxFloatValue);
+        System.out.println("Min is " + myMinFloatValue);
+
+        float score = -5.5f;
+        System.out.println("float score is " + score);
     }
 
     private static void investigateShort()
     {
+        System.out.println("Short");
         short myMinShortValue = Short.MIN_VALUE;
         short myMaxShortValue = Short.MAX_VALUE;
 
-        System.out.println(myMaxShortValue);
-        System.out.println(myMinShortValue);
+        System.out.println("Max is " + myMaxShortValue);
+        System.out.println("Min is " + myMinShortValue);
     }
 
 
     private static void toBinary( int score)
     {
-        //System.out.println(Integer.toBinaryString(score));
+        System.out.println(Integer.toBinaryString(score));
     }
 
 
     private static void investigateIntegers()
     {
+        System.out.println("Integers");
         int myValue = 10000;
 
         int myMinValue = Integer.MIN_VALUE;
@@ -35,14 +101,16 @@ public static void main( String[] args )
         System.out.println(myMinValue + 1);
         System.out.println(myMaxValue - 1);
 
-        System.out.println(myMinValue);
-        System.out.println(myMaxValue);
+        System.out.println("Max is " + myMaxValue);
+        System.out.println("Min is " + myMinValue);
     }
     private static void investigateBytes()
     {
+        System.out.println("Bytes");
         byte myMinByteValue = Byte.MIN_VALUE;
         byte myMaxByteValue = Byte.MAX_VALUE;
 
-        System.out.println(myMaxByteValue);
-        System.out.println(myMinByteValue);
+        System.out.println("Max is " + myMaxByteValue);
+        System.out.println("Min is " + myMinByteValue);
     }
+}
