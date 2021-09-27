@@ -3,7 +3,8 @@ public class DataTypes {
     {
 
         int score = 65535;
-
+        float pound = 100;
+        float kilos = 100;
 //        toBinary(score);
 //        investigateIntegers();
 //        investigateBytes();
@@ -11,10 +12,71 @@ public class DataTypes {
 //        investigateFloat();
 //        investigateDouble();
 //        investigateLong();
-        investigateChar();
+//        investigateChar();
+//        investigateBooleans();
+//        investigateStrings();
+//        testTypeDivision();
+        System.out.println("Pound to Kilos " + convertPoundKilos(pound));
+        System.out.println("Kilos to Pound " + convertKilosPound(kilos));
+    }
 
+    private static float convertKilosPound(float weightInKilos)
+    {
+        weightInKilos = weightInKilos / 0.45359237f;
+        return weightInKilos;
+    }
 
+    private static float convertPoundKilos(float weightInPound)
+    {
+        final float kilosInPound = 0.45359237f;
+        weightInPound = weightInPound * (kilosInPound);
+        return weightInPound;
+    }
 
+    private static void testTypeDivision()
+    {
+        int myIntValue = 5/3;
+        float myFloatValue = 5f/3f;
+        double myDoubleValue = 5d/3d;
+        long myLongValue = 5l/3l;
+
+        System.out.println(myIntValue);
+        System.out.println(myFloatValue);
+        System.out.println(myDoubleValue);
+        System.out.println(myLongValue);
+    }
+
+    private static void investigateStrings()
+    {
+        // String is not a primitive type
+        // It is a class
+        String myString = "This is a string";
+        System.out.println("This myString variable is " + myString);
+        myString = myString +", and this is more";
+        System.out.println(myString);
+        myString += " \u00A9 2021";
+        System.out.println(myString);
+
+        String numberString = "20.99";
+        numberString += "19.01";
+        System.out.println(numberString);
+
+        String lastString = "10";
+        int myInt = 50;
+        int convertedInt = Integer.parseInt(lastString);
+        System.out.println(myInt + convertedInt);
+
+        double doubleNumber = 120.47d;
+        double convertedDouble = (double)(convertedInt);
+        convertedDouble += doubleNumber;
+        System.out.println(convertedDouble);
+    }
+
+    private static void investigateBooleans()
+    {
+
+        boolean isOverEighteen = true;
+        boolean isEmployed = false;
     }
 
     private static void investigateChar()
@@ -28,6 +90,7 @@ public class DataTypes {
         System.out.println(myChar);
         System.out.println(myUniCode);
         System.out.println(copyrightChar);
+
     }
 
     private static void investigateLong()
@@ -83,12 +146,10 @@ public class DataTypes {
         System.out.println("Min is " + myMinShortValue);
     }
 
-
     private static void toBinary( int score)
     {
         System.out.println(Integer.toBinaryString(score));
     }
-
 
     private static void investigateIntegers()
     {
