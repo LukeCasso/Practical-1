@@ -44,8 +44,9 @@ public class DataTypes {
 
     private static float getWeightInKilos(Scanner keyboard) {
 
+        float weightInKilos = 0.000f;
         System.out.println("Please enter the weight in kilos");
-        float weightInKilos = keyboard.nextFloat();
+        weightInKilos = keyboard.nextFloat();
         if (weightInKilos <= 0)
         {
             System.out.println("Please enter a real number");
@@ -54,15 +55,16 @@ public class DataTypes {
         {
             System.out.println(weightInKilos + " Kilos to Pounds is " + convertKilosPound(weightInKilos) + "lbs");
         }
-//        return weightInKilos;
+        return weightInKilos;
     }
 
     private static float getWeightInPounds(Scanner keyboard) {
 
+        float weightInPounds = 0.000f;
         System.out.print("Please enter the weight in Pounds >");
         if( keyboard.hasNextFloat())
         {
-            float weightInPounds = keyboard.nextFloat();
+            weightInPounds = keyboard.nextFloat();
 
             for (int i=1; i <= 5; i++)
             {
@@ -233,3 +235,4 @@ public class DataTypes {
         System.out.println("Max is " + myMaxByteValue);
         System.out.println("Min is " + myMinByteValue);
     }
+}
