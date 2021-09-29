@@ -1,9 +1,17 @@
+import java.util.Scanner;
 // Create a program that lists integers in a descending order
 // Set up program that the numbers to sort are read in from the keyboard
 // Implements the following methods - getIntegers, printArray, sortIntegers
+//Ask user for size of Array
+
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
+        Scanner keyboard = new Scanner (System.in);
 
+        System.out.println("Please enter the size of array you want");
+
+        System.out.println("Enter the values in the array");
     }
 }
