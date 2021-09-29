@@ -2,29 +2,22 @@ public class DataTypes {
    public static void main( String[] args )
     {
         Scanner keyboard = new Scanner (System.in);
-        final String textRed = "\u001B[31m";
-        final String textBlue = "\u001B[34m";
-        final String textBlack = "\u001B[30m";
-        System.out.println("Please enter which weight you want to convert from: " + textRed + "Pounds" + textBlack + " or " + textBlue + "Kilos" + textBlack);
-        String conversionChoice = keyboard.next();
-        String pound = "Pounds";
-        String kilos = "Kilos";
+        String yes = "yes";
+        String no = "no";
 
-        if (conversionChoice.equalsIgnoreCase(pound))
+        System.out.print("Would you like to convert your weight: yes or no > ");
+        String answer = keyboard.next();
+
+        if(answer.equalsIgnoreCase(yes))
         {
-            float weightInPounds = getWeightInPounds(keyboard);
-
-
+            userInput(keyboard);
         }
         else
-
         {
-            float weightInKilos = getWeightInKilos(keyboard);
-
+            System.out.println("That's fine");
         }
 
-
-        int score = 65535;
+//        int score = 65535;
 //        float pound = 100;
 //        float kilos = 100;
 //        toBinary(score);
@@ -42,44 +35,93 @@ public class DataTypes {
 
     }
 
-    private static float getWeightInKilos(Scanner keyboard) {
+    private static void userInput(Scanner keyboard) {
+        System.out.print("Please enter which weight you want to convert from: " +
+                Colours.green + "Pounds" + Colours.black + " or " + Colours.blue + "Kilos" + Colours.reset + " > ");
+        String conversionChoice = keyboard.next();
+        String pound = "Pounds";
+        String kilos = "Kilos";
 
-        float weightInKilos = 0.000f;
-        System.out.println("Please enter the weight in kilos");
-        weightInKilos = keyboard.nextFloat();
-        if (weightInKilos <= 0)
+        if (conversionChoice.equalsIgnoreCase(pound))
         {
-            System.out.println("Please enter a real number");
+            float weightInPounds = getWeightInPounds(keyboard);
+        }
+        else if(conversionChoice.equalsIgnoreCase(kilos))
+        {
+            float weightInKilos = getWeightInKilos(keyboard);
         }
         else
         {
-            System.out.println(weightInKilos + " Kilos to Pounds is " + convertKilosPound(weightInKilos) + "lbs");
+            System.out.println(Colours.red + "Choose one of the two options" + Colours.reset);
+            userInput(keyboard);
+        }
+
+    }
+
+    private static float getWeightInKilos(Scanner keyboard) {
+
+        final float invalidWeight = -1f;
+        float weightInKilos = invalidWeight;
+        System.out.print("Please enter the weight in Kilos > ");
+        if( keyboard.hasNextFloat())
+        {
+            weightInKilos = keyboard.nextFloat();
+
+            if (weightInKilos <=0 )
+            {
+                System.out.println(Colours.red + "Please enter a real number" + Colours.reset);
+                getWeightInKilos(keyboard);
+            }
+            else
+            {
+                System.out.println(Colours.green + weightInKilos + Colours.reset + " Pounds to Kilos is "
+                        + Colours.blue + convertPoundKilos(weightInKilos) + "kg");
+
+            }
+
+            return weightInKilos;
+        }
+
+        else
+        {
+            System.out.println(Colours.red + "Please enter a number" + Colours.reset);
+            getWeightInPounds(keyboard);
         }
         return weightInKilos;
     }
 
-    private static float getWeightInPounds(Scanner keyboard) {
-
-        float weightInPounds = 0.000f;
-        System.out.print("Please enter the weight in Pounds >");
+    private static float getWeightInPounds(Scanner keyboard)
+    {
+        final float invalidWeight = -1f;
+        float weightInPounds = invalidWeight;
+        System.out.print("Please enter the weight in Pounds > ");
+        System.out.println();
         if( keyboard.hasNextFloat())
         {
             weightInPounds = keyboard.nextFloat();
 
-            for (int i=1; i <= 5; i++)
+            if (weightInPounds <=0 )
             {
-                if (weightInPounds <=0 )
-                {
-                    System.out.println("Please enter a real number");
-                }
-                else
-                {
-                    System.out.println( weightInPounds + " Pounds to Kilos is " + convertPoundKilos(weightInPounds) + "kg");
-                }
+                System.out.println(Colours.red + "Please enter a real number" + Colours.reset);
+                getWeightInPounds(keyboard);
             }
+            else
+            {
+                System.out.print(Colours.green + weightInPounds + Colours.reset + " Pounds to Kilos is ");
+                System.out.printf(Colours.blue + convertPoundKilos(weightInPounds) +"kg" + Colours.reset);
+
+            }
+
             return weightInPounds;
         }
+
+        else
+        {
+            System.out.println(Colours.red + "Please enter a number" + Colours.reset);
+            getWeightInPounds(keyboard);
+        }
         return weightInPounds;
+
     }
 
     private static float convertKilosPound(float weightInKilos)
