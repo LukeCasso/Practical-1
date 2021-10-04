@@ -1,0 +1,65 @@
+import java.util.ArrayList;
+
+public class GroceryList {
+
+    private ArrayList<GroceryItem> groceryList = new ArrayList<>();
+
+    public GroceryList(ArrayList<GroceryItem> groceryList)
+    {
+        this.groceryList = groceryList;
+    }
+
+    public ArrayList<GroceryItem> getGroceryList()
+    {
+        return groceryList;
+    }
+
+//    public void setGroceryList(ArrayList<String> groceryList)
+//    {
+//        this.groceryList = groceryList;
+//    }
+
+
+    @Override
+    public String toString()
+    {
+        return "GroceryList{" +
+                "groceryList=" + groceryList +
+                '}';
+    }
+
+    public void printGroceryList()
+    {
+        System.out.println("You have " + groceryList.size() + " items in your grocery list costing " + groceryList.costOfList(());
+        int i=1;
+        for (GroceryItem item :groceryList)
+        {
+            System.out.println(i + ". " + item);
+            i++;
+        }
+    }
+
+    public float costOfList()
+    {
+        float totalCost =0;
+        for(GroceryItem item: groceryList)
+        {
+            totalCost += item.getPrice();
+        }
+        return totalCost;
+    }
+    /*
+     *Write this method of hw
+     */
+
+    public void removeGroceryItem(String itemName)
+    {
+        
+    }
+    
+    public void removeGroceryItem(int poistion)
+    {
+
+    }
+    
+}
