@@ -54,12 +54,17 @@ public class GroceryList {
 
     public void removeGroceryItem(String itemName)
     {
-        
+
     }
-    
+
     public void removeGroceryItem(int poistion)
     {
 
     }
     
+    public void modifyGroceryItem(int position, GroceryItem newItem)
+    {
+        
+    }
+
 }
