@@ -9,6 +9,7 @@ public class GroceryList {
         this.groceryList = groceryList;
     }
 
+
     public ArrayList<GroceryItem> getGroceryList()
     {
         return groceryList;
@@ -30,7 +31,7 @@ public class GroceryList {
 
     public void printGroceryList()
     {
-        System.out.println("You have " + groceryList.size() + " items in your grocery list costing " + groceryList.costOfList(());
+        System.out.println("You have " + groceryList.size() + " items in your grocery list costing " + costOfList(groceryList));
         int i=1;
         for (GroceryItem item :groceryList)
         {
@@ -39,10 +40,10 @@ public class GroceryList {
         }
     }
 
-    public float costOfList()
+    public float costOfList(ArrayList<GroceryItem> groceryList)
     {
         float totalCost =0;
-        for(GroceryItem item: groceryList)
+        for(GroceryItem item: this.groceryList)
         {
             totalCost += item.getPrice();
         }
@@ -52,19 +53,18 @@ public class GroceryList {
      *Write this method of hw
      */
 
-    public void removeGroceryItem(String itemName)
+    public void removeGroceryItem(GroceryItem itemName)
     {
-
+        groceryList.remove(itemName);
     }
 
-    public void removeGroceryItem(int poistion)
+    public void removeGroceryItem(int position)
     {
-
+        groceryList.remove(position);
     }
-    
+
     public void modifyGroceryItem(int position, GroceryItem newItem)
     {
-        
+        groceryList.set(position, newItem);
     }
 
-}
