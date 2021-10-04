@@ -1,6 +1,10 @@
+import java.util.Scanner;
+
 public class DataTypes {
-   public static void main( String[] args )
+
+    public static void main( String[] args )
     {
+
         Scanner keyboard = new Scanner (System.in);
         String yes = "yes";
         String no = "no";
@@ -31,7 +35,6 @@ public class DataTypes {
 //        investigateBooleans();
 //        investigateStrings();
 //        testTypeDivision();
-
 
     }
 
@@ -86,6 +89,7 @@ public class DataTypes {
         {
             System.out.println(Colours.red + "Please enter a number" + Colours.reset);
             getWeightInPounds(keyboard);
+            keyboard.next();
         }
         return weightInKilos;
     }
@@ -95,7 +99,6 @@ public class DataTypes {
         final float invalidWeight = -1f;
         float weightInPounds = invalidWeight;
         System.out.print("Please enter the weight in Pounds > ");
-        System.out.println();
         if( keyboard.hasNextFloat())
         {
             weightInPounds = keyboard.nextFloat();
@@ -118,6 +121,7 @@ public class DataTypes {
         else
         {
             System.out.println(Colours.red + "Please enter a number" + Colours.reset);
+            keyboard.next();
             getWeightInPounds(keyboard);
         }
         return weightInPounds;
@@ -277,4 +281,6 @@ public class DataTypes {
         System.out.println("Max is " + myMaxByteValue);
         System.out.println("Min is " + myMinByteValue);
     }
+
+
 }
