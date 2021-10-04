@@ -1,0 +1,81 @@
+import java.util.Arrays;
+import java.util.Scanner;
+// Create a program that lists integers in a descending order
+// Set up program that the numbers to sort are read in from the keyboard
+// Implements the following methods - getIntegers, printArray, sortIntegers
+//Ask user for size of Array
+
+public class UsingArrays {
+    public static void main(String[] args)
+    {
+        Scanner keyboard = new Scanner (System.in);
+        getIntegers(keyboard);
+
+
+    }
+
+    private static void getIntegers(Scanner keyboard)
+    {
+
+        System.out.print("Please enter the size of array you want > ");
+        if(keyboard.hasNextInt()) 
+        {
+            int size = keyboard.nextInt();
+
+            int[] values = new int[size];
+            int userNumber = 0;
+            for (int i = 0; i <= size - 1; i++) {
+                System.out.printf("Please enter number %d > ", i);
+                if(keyboard.hasNextInt())
+                {
+                    userNumber = keyboard.nextInt();
+                    values[i] = userNumber; 
+                }
+                else if(keyboard.hasNextFloat() || keyboard.hasNextDouble())
+                {
+                    System.out.println(Colours.red + "Please enter an integer");
+                }
+                else
+                {
+                    System.out.println(Colours.red + "Please enter a number");
+                }
+            }
+            printArray(values);
+        }
+        else if(keyboard.hasNextFloat() || keyboard.hasNextDouble()) 
+        {
+            System.out.println(Colours.red + "Please enter an integer");
+        }
+        else
+        {
+            System.out.println(Colours.red + "Please enter a number");
+        }
+    }
+
+    private static int[] sortIntegers(int[] userArray)
+    {
+
+        int [] arrayTemp = userArray.clone();
+        Arrays.sort(arrayTemp);
+        int[] arrayOut = new int[arrayTemp.length];
+        int j = (arrayTemp.length -1);
+        for (int i=0; i<= arrayTemp.length; i++)
+        {
+            if(j >= 0)
+            {
+                arrayOut[i] = arrayTemp[j];
+                j--;
+            }
+        }
+        return arrayOut;
+    }
+    
+    private static void printArray(int [] userArray)
+    {
+        System.out.print("The array you have entered is: ");
+        System.out.println(Arrays.toString(userArray));
+
+        System.out.print("Your array sorted in descending order is ");
+        System.out.println(Arrays.toString(sortIntegers(userArray)));
+    }
+}

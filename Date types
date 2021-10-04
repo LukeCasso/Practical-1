@@ -1,0 +1,280 @@
+public class DataTypes {
+   public static void main( String[] args )
+    {
+        Scanner keyboard = new Scanner (System.in);
+        String yes = "yes";
+        String no = "no";
+
+        System.out.print("Would you like to convert your weight: yes or no > ");
+        String answer = keyboard.next();
+
+        if(answer.equalsIgnoreCase(yes))
+        {
+            userInput(keyboard);
+        }
+        else
+        {
+            System.out.println("That's fine");
+        }
+
+//        int score = 65535;
+//        float pound = 100;
+//        float kilos = 100;
+//        toBinary(score);
+//        investigateIntegers();
+//        investigateBytes();
+//        investigateShort();
+//        investigateFloat();
+//        investigateDouble();
+//        investigateLong();
+//        investigateChar();
+//        investigateBooleans();
+//        investigateStrings();
+//        testTypeDivision();
+
+
+    }
+
+    private static void userInput(Scanner keyboard) {
+        System.out.print("Please enter which weight you want to convert from: " +
+                Colours.green + "Pounds" + Colours.black + " or " + Colours.blue + "Kilos" + Colours.reset + " > ");
+        String conversionChoice = keyboard.next();
+        String pound = "Pounds";
+        String kilos = "Kilos";
+
+        if (conversionChoice.equalsIgnoreCase(pound))
+        {
+            float weightInPounds = getWeightInPounds(keyboard);
+        }
+        else if(conversionChoice.equalsIgnoreCase(kilos))
+        {
+            float weightInKilos = getWeightInKilos(keyboard);
+        }
+        else
+        {
+            System.out.println(Colours.red + "Choose one of the two options" + Colours.reset);
+            userInput(keyboard);
+        }
+
+    }
+
+    private static float getWeightInKilos(Scanner keyboard) {
+
+        final float invalidWeight = -1f;
+        float weightInKilos = invalidWeight;
+        System.out.print("Please enter the weight in Kilos > ");
+        if( keyboard.hasNextFloat())
+        {
+            weightInKilos = keyboard.nextFloat();
+
+            if (weightInKilos <=0 )
+            {
+                System.out.println(Colours.red + "Please enter a real number" + Colours.reset);
+                getWeightInKilos(keyboard);
+            }
+            else
+            {
+                System.out.println(Colours.green + weightInKilos + Colours.reset + " Pounds to Kilos is "
+                        + Colours.blue + convertPoundKilos(weightInKilos) + "kg");
+
+            }
+
+            return weightInKilos;
+        }
+
+        else
+        {
+            System.out.println(Colours.red + "Please enter a number" + Colours.reset);
+            getWeightInPounds(keyboard);
+        }
+        return weightInKilos;
+    }
+
+    private static float getWeightInPounds(Scanner keyboard)
+    {
+        final float invalidWeight = -1f;
+        float weightInPounds = invalidWeight;
+        System.out.print("Please enter the weight in Pounds > ");
+        System.out.println();
+        if( keyboard.hasNextFloat())
+        {
+            weightInPounds = keyboard.nextFloat();
+
+            if (weightInPounds <=0 )
+            {
+                System.out.println(Colours.red + "Please enter a real number" + Colours.reset);
+                getWeightInPounds(keyboard);
+            }
+            else
+            {
+                System.out.print(Colours.green + weightInPounds + Colours.reset + " Pounds to Kilos is ");
+                System.out.printf(Colours.blue + convertPoundKilos(weightInPounds) +"kg" + Colours.reset);
+
+            }
+
+            return weightInPounds;
+        }
+
+        else
+        {
+            System.out.println(Colours.red + "Please enter a number" + Colours.reset);
+            getWeightInPounds(keyboard);
+        }
+        return weightInPounds;
+
+    }
+
+    private static float convertKilosPound(float weightInKilos)
+    {
+        weightInKilos = weightInKilos / 0.45359237f;
+        return weightInKilos;
+    }
+
+    private static float convertPoundKilos(float weightInPound)
+    {
+        final float kilosInPound = 0.45359237f;
+        weightInPound = weightInPound * (kilosInPound);
+        return weightInPound;
+    }
+
+    private static void testTypeDivision()
+    {
+        int myIntValue = 5/3;
+        float myFloatValue = 5f/3f;
+        double myDoubleValue = 5d/3d;
+        long myLongValue = 5l/3l;
+
+        System.out.println(myIntValue);
+        System.out.println(myFloatValue);
+        System.out.println(myDoubleValue);
+        System.out.println(myLongValue);
+    }
+
+    private static void investigateStrings()
+    {
+        // String is not a primitive type
+        // It is a class
+        String myString = "This is a string";
+        System.out.println("This myString variable is " + myString);
+        myString = myString +", and this is more";
+        System.out.println(myString);
+        myString += " \u00A9 2021";
+        System.out.println(myString);
+
+        String numberString = "20.99";
+        numberString += "19.01";
+        System.out.println(numberString);
+
+        String lastString = "10";
+        int myInt = 50;
+        int convertedInt = Integer.parseInt(lastString);
+        System.out.println(myInt + convertedInt);
+
+        double doubleNumber = 120.47d;
+        double convertedDouble = (double)(convertedInt);
+        convertedDouble += doubleNumber;
+        System.out.println(convertedDouble);
+    }
+
+    private static void investigateBooleans()
+    {
+
+        boolean isOverEighteen = true;
+        boolean isEmployed = false;
+    }
+
+    private static void investigateChar()
+    {
+
+        System.out.println("Char");
+        char myChar ='A';
+        char myUniCode = '\u0044';
+        char copyrightChar = '\u00A9';
+
+        System.out.println(myChar);
+        System.out.println(myUniCode);
+        System.out.println(copyrightChar);
+
+    }
+
+    private static void investigateLong()
+    {
+        System.out.println("Long");
+        long myMinLongValue = Long.MIN_VALUE;
+        long myMaxLongValue = Long.MAX_VALUE;
+
+        System.out.println("Max is " + myMaxLongValue);
+        System.out.println("Min is " + myMinLongValue);
+
+        System.out.println("Max Days using long is " + convertMaxLongToDays(myMaxLongValue));
+
+        long bigValue = 2_147_987_7777L;
+        System.out.println(bigValue);
+    }
+
+    private static long convertMaxLongToDays(long myMaxLongValue)
+    {
+        return myMaxLongValue/(24*60*60*1000*365);
+    }
+
+    private static void investigateDouble()
+    {
+        System.out.println("Double");
+        double myMinDoubleValue = Double.MIN_VALUE;
+        double myMaxDoubleValue = Double.MAX_VALUE;
+
+        System.out.println("Max is " + myMaxDoubleValue);
+        System.out.println("Min is " + myMinDoubleValue);
+    }
+
+    private static void investigateFloat()
+    {
+        System.out.println("Float");
+        float myMinFloatValue = Float.MIN_VALUE;
+        float myMaxFloatValue = Float.MAX_VALUE;
+
+        System.out.println("Max is " + myMaxFloatValue);
+        System.out.println("Min is " + myMinFloatValue);
+
+        float score = -5.5f;
+        System.out.println("float score is " + score);
+    }
+
+    private static void investigateShort()
+    {
+        System.out.println("Short");
+        short myMinShortValue = Short.MIN_VALUE;
+        short myMaxShortValue = Short.MAX_VALUE;
+
+        System.out.println("Max is " + myMaxShortValue);
+        System.out.println("Min is " + myMinShortValue);
+    }
+
+    private static void toBinary( int score)
+    {
+        System.out.println(Integer.toBinaryString(score));
+    }
+
+    private static void investigateIntegers()
+    {
+        System.out.println("Integers");
+        int myValue = 10000;
+
+        int myMinValue = Integer.MIN_VALUE;
+        int myMaxValue = Integer.MAX_VALUE;
+
+        System.out.println(myMinValue + 1);
+        System.out.println(myMaxValue - 1);
+
+        System.out.println("Max is " + myMaxValue);
+        System.out.println("Min is " + myMinValue);
+    }
+    private static void investigateBytes() {
+        System.out.println("Bytes");
+        byte myMinByteValue = Byte.MIN_VALUE;
+        byte myMaxByteValue = Byte.MAX_VALUE;
+
+        System.out.println("Max is " + myMaxByteValue);
+        System.out.println("Min is " + myMinByteValue);
+    }
+}
