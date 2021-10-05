@@ -1,7 +1,8 @@
+package com.dkit.gd2.lukecassidy;
+
 import java.util.ArrayList;
 
 public class GroceryList {
-
     private ArrayList<GroceryItem> groceryList = new ArrayList<>();
 
     public GroceryList(ArrayList<GroceryItem> groceryList)
@@ -9,6 +10,10 @@ public class GroceryList {
         this.groceryList = groceryList;
     }
 
+    public GroceryList()
+    {
+
+    }
 
     public ArrayList<GroceryItem> getGroceryList()
     {
@@ -53,18 +58,42 @@ public class GroceryList {
      *Write this method of hw
      */
 
-    public void removeGroceryItem(GroceryItem itemName)
+//    public void removeGroceryItem(GroceryItem itemName)
+//    {
+//        groceryList.remove(itemName);
+//
+//    }
+    public void removeGroceryItem (String itemName)
     {
-        groceryList.remove(itemName);
+        int position = findItem(itemName);
+        if(position >=0)
+        {
+            removeGroceryItem(position);
+        }
     }
 
-    public void removeGroceryItem(int position)
+    private int findItem(String searchItem)
     {
-        groceryList.remove(position);
+        return groceryList.indexOf(searchItem);
     }
 
-    public void modifyGroceryItem(int position, GroceryItem newItem)
+    private void removeGroceryItem(int position)
+    {
+       groceryList.remove(position);
+    }
+
+    public void modifyGroceryItem (String currentItem, GroceryItem newItem)
+    {
+        int position = findItem(currentItem);
+        if(position >=0)
+        {
+            modifyGroceryItem(position, newItem);
+        }
+    }
+
+    private void modifyGroceryItem(int position, GroceryItem newItem)
     {
         groceryList.set(position, newItem);
+        System.out.println("Grocery item " + (position +1) + " has been modified.");
     }
-
+}
