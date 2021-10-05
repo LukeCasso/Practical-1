@@ -7,33 +7,84 @@ import java.util.Scanner;
 //Ask user for size of Array
 
 public class UsingArrays {
+
+    private static Scanner keyboard = new Scanner (System.in);
+    private static GroceryList groceryList = new GroceryList();
+
     public static void main(String[] args)
     {
-        Scanner keyboard = new Scanner (System.in);
+        boolean quit = false;
+        int choice = 0;
+
+
+        //Loop until user wants to quit, taking input and handling in a method
+
+        while(quit = false)
+        {
+            if(choice == 0)
+            {
+                printInstructions();
+            }
+            else if( choice == 1)
+            {
+                groceryList.printGroceryList();
+            }
+            else if( choice == 2)
+            {
+                addItem();
+            }
+        }
+
 //        getIntegers(keyboard);
 
-        GroceryItem bread = new GroceryItem("bread", 0.99f);
-        GroceryItem milk = new GroceryItem("milk", 1.49f);
-        GroceryItem butter = new GroceryItem("butter", 2.40f);
-        GroceryItem teabags = new GroceryItem("teabags", 4.99f);
-        GroceryItem potatoes = new GroceryItem("potatoes", 12.99f);
-        GroceryItem eggs = new GroceryItem("eggs", 3.50f);
+//        GroceryItem bread = new GroceryItem("bread", 0.99f);
+//        GroceryItem milk = new GroceryItem("milk", 1.49f);
+//        GroceryItem butter = new GroceryItem("butter", 2.40f);
+//        GroceryItem teabags = new GroceryItem("teabags", 4.99f);
+//        GroceryItem potatoes = new GroceryItem("potatoes", 12.99f);
+//        GroceryItem eggs = new GroceryItem("eggs", 3.50f);
+//
+//        ArrayList<GroceryItem> lukes_list = new ArrayList<>();
+//        GroceryList groceryList = new GroceryList(lukes_list);
+//
+//        lukes_list.add(bread);
+//        lukes_list.add(milk);
+//        lukes_list.add(butter);
+//        lukes_list.add(teabags);
+//        lukes_list.add(potatoes);
+//
+//        groceryList.printGroceryList();
+//        System.out.println("------------");
+//        //groceryList.removeGroceryItem(bread);
+//        groceryList.removeGroceryItem("bread");
+//
+//        groceryList.modifyGroceryItem(1, eggs);
+//
+//        groceryList.printGroceryList();
 
-        ArrayList<GroceryItem> lukes_list = new ArrayList<>();
-        GroceryList groceryList = new GroceryList(lukes_list);
 
-        lukes_list.add(bread);
-        lukes_list.add(milk);
-        lukes_list.add(butter);
-        lukes_list.add(teabags);
-        lukes_list.add(potatoes);
-
-        groceryList.removeGroceryItem(bread);
-        groceryList.removeGroceryItem(2);
-        groceryList.modifyGroceryItem(1, eggs);
-
-        groceryList.printGroceryList();
     }
+
+    private static void addItem()
+    {
+        String newItem;
+        float newPrice;
+        System.out.println("Enter the name of the item you want to enter > ");
+        newItem = keyboard.next();
+
+        System.out.println("Enter the price of the item");
+        newPrice = keyboard.nextFloat();
+    }
+
+    private static void printInstructions()
+    {
+        System.out.println("Press: \t0) to print choices\n\t\t1) to print list of grocery items" +
+                "\n\t\t2) to add item to list\n\t\t3) to modify list\n\t\t4) to remove items\n\t\t5) to search list\n\t\t6) to quit");
+
+
+
+    }
+
 
     private static void getIntegers(Scanner keyboard)
     {
