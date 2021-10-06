@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -10,15 +11,18 @@ public class UsingArrays {
 
     private static Scanner keyboard = new Scanner (System.in);
     private static GroceryList groceryList = new GroceryList();
+    private static ArrayList<GroceryItem> users_list = new ArrayList<>();
 
     public static void main(String[] args)
     {
         boolean quit = false;
         int choice = 0;
-
+        String userName;
+        groceryList.setGroceryList(users_list);
+        System.out.print("Please enter your name > ");
+        userName = keyboard.next();
 
         //Loop until user wants to quit, taking input and handling in a method
-
         while(quit = false)
         {
             if(choice == 0)
@@ -32,6 +36,26 @@ public class UsingArrays {
             else if( choice == 2)
             {
                 addItem();
+            }
+            else if( choice == 3)
+            {
+//                groceryList.modifyGroceryItem();
+            }
+            else if( choice == 4)
+            {
+
+            }
+            else if (choice == 5)
+            {
+
+            }
+            else if (choice == 6)
+            {
+
+            }
+            else if ( choice >= 7 || choice <=-1)
+            {
+                System.out.println(Colours.red + "Please enter one of the choices" + Colours.reset);
             }
         }
 
@@ -67,19 +91,45 @@ public class UsingArrays {
 
     private static void addItem()
     {
-        String newItem;
-        float newPrice;
-        System.out.println("Enter the name of the item you want to enter > ");
-        newItem = keyboard.next();
+        String newItemName = "";
+        float newPrice = 0.00f;
 
-        System.out.println("Enter the price of the item");
-        newPrice = keyboard.nextFloat();
+        for (int i =0; i<= 1; i++)
+        {
+            System.out.println("Enter the name of the item you want to enter > ");
+            if (keyboard.hasNext()) {
+                newItemName = keyboard.next();
+            }
+            else
+            {
+                System.out.println(Colours.red + "Please enter a string" + Colours.reset);
+                keyboard.next();
+                i=0;
+            }
+        }
+        for (int j=0; j<=1; j++)
+        {
+            System.out.println("Enter the price of the item");
+            if (keyboard.hasNextFloat()) {
+                newPrice = keyboard.nextFloat();
+            }
+            else
+            {
+                System.out.println(Colours.red + "Please enter a float" + Colours.reset);
+                keyboard.next();
+                j = 0;
+            }
+        }
+        GroceryItem newItem = new GroceryItem(newItemName, newPrice);
+        users_list.add(newItem);
+
     }
 
     private static void printInstructions()
     {
         System.out.println("Press: \t0) to print choices\n\t\t1) to print list of grocery items" +
-                "\n\t\t2) to add item to list\n\t\t3) to modify list\n\t\t4) to remove items\n\t\t5) to search list\n\t\t6) to quit");
+                "\n\t\t2) to add item to list\n\t\t3) to modify list\n\t\t4) to remove items\n\t\t5)" +
+                " to search list\n\t\t6) to quit");
 
 
 
